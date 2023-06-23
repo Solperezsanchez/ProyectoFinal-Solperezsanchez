@@ -6,6 +6,7 @@ function pedirNombre() {
   function saludarCliente(nombre) {
     alert(`¡Bienvenidx ${nombre} a nuestra tienda!`);
   }
+  pedirNombre()
 //   Comenzamos con el menu para que puedan seleccionar lo que deseen
 function menu() {
     let opcionMenu = parseInt(
@@ -113,3 +114,63 @@ function verCarrito() {
     menu();
   }
 //   funcion para eliminar producto
+function eliminarProductos() {
+    for (const x of carrito) {
+      alert(x.nombre + x.descripcion + x.precio);
+      let productoEliminar = prompt("Eliminar produto. Escribi SI o NO");
+      productoEliminar = productoEliminar.toUpperCase();
+      if (productoEliminar == "SI") {
+        let posicion = carrito.indexOf(x);
+        carrito.splice(posicion, 1);
+        precio = precio - x.precio;
+        alert(x.nombre + " Se elimino de forma exitosa!");
+      }
+    }
+    menu();
+  }
+//   funcion para pagar 
+function pagar() {
+    nuevoPedido();
+    alert(`Tu pedido ${pedido}. 
+      Se cobrara $${precio}
+      Gracias por comprar en nuestra tienda!`);
+  }
+//   productos
+const cocoVai = {
+    nombre: "Home Spray Coco Vai",
+    precio: 680,
+    descripcion:
+      "Spray de 500ml. Notas de salida:Coco. Notas de corazon:Nota lactea, Durazno. Notas de fondo: Coco, Vainilla",
+  };
+  
+  const amour = {
+    nombre: "Home Spray Amour",
+    precio: 680,
+    descripcion:
+      "Spray de 500ml. Notas de salida: Flores de anis acarameladas, Flores de cerezo. Notas de corazon: Jazmin, Sandalo, Gardenia. Notas de fondo: Amber gris, Incienso, Vainilla.",
+  };
+  
+  const floresBlancas = {
+    nombre: "Home Spray Flores Blancas.",
+    precio: 680,
+    descripcion: "Spray de 500ml. Notas de salida: Ciclamen, Gardenia, Flor de naranjo dulce. Notas de corazon: Jazmin, Orquidea, Ylang Ylang. Notas de fondo: Almizcle, Balsamico.",
+  };
+  
+  const bamboo = {
+    nombre: "Home spray Bamboo",
+    precio: 680,
+    descripcion:
+      "Spray de 500ml. Notas de salida:Notas verdes frutales, Anana, Frutilla. Notas de corazon: Jazmin, Muguet, Rosa, Anis. Notas de fondo: Almizcle, Sandalo, Bambu.",
+  };
+  
+  const bubblegum = {
+    nombre: "Bubblegum",
+    precio: 680,
+    descripcion: "Spray de 500ml. Notas de salida:Cerezas, Naranja, Anana. Notas de corazon:Frutilla. Notas de fondo: Vinilla, Canela.",
+  };
+//   Variables
+
+let carrito = [];
+let pedido = [];
+let precio = 0;
+menu();
