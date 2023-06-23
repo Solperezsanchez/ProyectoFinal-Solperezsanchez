@@ -99,4 +99,17 @@ function seleccionarProductos() {
     }
     menu();
   }
-  
+//   Funcion para un nuevo pedido
+function nuevoPedido() {
+    pedido = [];
+    for (const x of carrito) {
+      pedido.push(x.nombre);
+    }
+  }
+//   funcion para ver el carrito
+function verCarrito() {
+    nuevoPedido();
+    alert(`${pedido}`);
+    menu();
+  }
+//   funcion para eliminar producto
