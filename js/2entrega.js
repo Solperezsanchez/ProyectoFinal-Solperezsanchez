@@ -37,4 +37,66 @@ function menu() {
         menu();
     }
   }
+//   Funcion para que seleccionen el producto que deseen 
+function seleccionarProductos() {
+    let productoIngresado =
+      prompt(`Selecciona el numero que corresponda a tu HomeSpray deseado o en su defecto escribi "ESC" para regresar al menu anterior.
+       1.  ${cocoVai.nombre}: ${cocoVai.descripcion} - $${cocoVai.precio}
+       2. ${amour.nombre}: ${amour.descripcion} - $${amour.precio}
+       3. ${floresBlancas.nombre}: ${floresBlancas.descripcion} - $${floresBlancas.precio}
+       4. ${bamboo.nombre}: ${bamboo.descripcion} - $${bamboo.precio}
+       5. ${bubblegum.nombre}: ${bubblegum.descripcion} - $${bubblegum.precio}`);
+  
+    productoIngresado = productoIngresado.toUpperCase();
+  
+    while (productoIngresado != "ESC") {
+      switch (productoIngresado) {
+        case "1":
+          carrito.push(cocoVai);
+          precio = precio + cocoVai.precio;
+          alert(cocoVai.nombre + " se agrego al carrito de forma exitosa!");
+          break;
+  
+        case "2":
+          carrito.push(amour);
+          precio = precio + amour.precio;
+          alert(amour.nombre + " se agrego al carrito de forma exitosa!");
+          break;
+  
+        case "3":
+          carrito.push(floresBlancas);
+          precio = precio + floresBlancas.precio;
+          alert(floresBlancas.nombre + " se agrego al carrito de forma exitosa!");
+          break;
+  
+        case "4":
+          carrito.push(bamboo);
+          precio = precio + bamboo.precio;
+          alert(bamboo.nombre + " se agrego al carrito de forma exitosa!");
+          break;
+  
+        case "5":
+          carrito.push(bubblegum);
+          precio = precio + bubblegum.precio;
+          alert(bubblegum.nombre + " se agrego al carrito de forma exitosa!");
+          break;
+  
+        default:
+          alert(
+            "Esta opcion no existe, por favor ingresa lo que esta en el menu."
+          );
+          break;
+      }
+  
+      productoIngresado =
+        prompt(`Selecciona el numero que corresponda a tu HomeSpray deseado o en su defecto escribi "ESC" para regresar al menu anterior.
+          1.  ${cocoVai.nombre}: ${cocoVai.descripcion} - $${cocoVai.precio}
+          2. ${amour.nombre}: ${amour.descripcion} - $${amour.precio}
+          3. ${floresBlancas.nombre}: ${floresBlancas.descripcion} - $${floresBlancas.precio}
+          4. ${bamboo.nombre}: ${bamboo.descripcion} - $${bamboo.precio}
+          5. ${bubblegum.nombre}: ${bubblegum.descripcion} - $${bubblegum.precio}`);
+      productoIngresado = productoIngresado.toUpperCase();
+    }
+    menu();
+  }
   
