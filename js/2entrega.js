@@ -34,6 +34,7 @@ let productosDiv = document.getElementById("productos")
 
 //recorrer estanteria para imprimir TOOODOS los elementos de mi array
 function mostrarProductos(estanteria){
+  productosDiv.innerHTML =``
   for(let producto of estanteria ){
      let nuevoProductoDiv = document.createElement("div")
      //agregar class
