@@ -1,28 +1,5 @@
 
-//ORDENAR PRODUCTOS
-let selectOrden = document.getElementById("selectOrden")
-
-function ordenarAlfabeticamente(estanteria){
-  const arrayAlfabetico = [].concat(estanteria)
-  arrayAlfabetico.sort( (a,b) =>{
-     if (a.nombre > b.nombre) {
-        return 1
-      }
-      if (a.nombre < b.nombre) {
-        return -1
-      }
-      return 0
-  })
-  selectOrden.addEventListener("click", ()=>{
-    ordenarAlfabeticamente(estanteria)
-  }) 
-}
-let enviada = document.getElementById("enviarDuda")
-enviada.addEventListener("click", enviada)
-function enviada (){
-  alert(`Tu consulta fue enviada`)
-}
-
+//ORDENAR PRODUCTO
 
 
 //MIS PRODUCTOS
