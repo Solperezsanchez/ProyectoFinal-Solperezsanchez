@@ -1,12 +1,29 @@
-// Le damos la bienvenida al cliente con esta funcion
-function pedirNombre() {
-  let nombreIngresado = prompt(`Ingresa tu nombre`);
-  saludarCliente(nombreIngresado);
+
+//ORDENAR PRODUCTOS
+let selectOrden = document.getElementById("selectOrden")
+
+function ordenarAlfabeticamente(estanteria){
+  const arrayAlfabetico = [].concat(estanteria)
+  arrayAlfabetico.sort( (a,b) =>{
+     if (a.nombre > b.nombre) {
+        return 1
+      }
+      if (a.nombre < b.nombre) {
+        return -1
+      }
+      return 0
+  })
+  selectOrden.addEventListener("click", ()=>{
+    ordenarAlfabeticamente(estanteria)
+  }) 
 }
-function saludarCliente(nombre) {
-  alert(`¡Bienvenidx ${nombre} a nuestra tienda!`);
+let enviada = document.getElementById("enviarDuda")
+enviada.addEventListener("click", enviada)
+function enviada (){
+  alert(`Tu consulta fue enviada`)
 }
-pedirNombre();
+
+
 
 //MIS PRODUCTOS
 class producto{
@@ -18,9 +35,7 @@ class producto{
      this.imagen = imagen
 
   }
-  mostrarInfoProducto(){
-     console.log(`El textil ${this.nombre} es un  ${this.descripcion} y su precio es ${this.precio}`)
-  }
+ 
 }
 //Instanciación de objetos: 
 const producto1 = new producto(1,"Spray textil Coco Vai",710,"Spray de 250ml. Notas de salida:Coco. Notas de corazon:Nota lactea, Durazno. Notas de fondo: Coco, Vainilla", "textilCocoVai.jpg")
@@ -41,8 +56,8 @@ estanteria.push(producto1, producto2, producto3, producto4, producto5)
 let productosDiv = document.getElementById("productos")
 
 //recorrer estanteria para imprimir TOOODOS los elementos de mi array
-function mostrarCatalogo(array){
-  for(let producto of array ){
+function mostrarProductos(estanteria){
+  for(let producto of estanteria ){
      let nuevoProductoDiv = document.createElement("div")
      //agregar class
      nuevoProductoDiv.className = "col-12 col-md-6 col-lg-4 my-2"
@@ -67,4 +82,4 @@ function mostrarCatalogo(array){
   }
 
 }
-mostrarCatalogo(estanteria)
+mostrarProductos(estanteria)
