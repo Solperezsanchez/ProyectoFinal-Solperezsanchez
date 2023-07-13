@@ -28,6 +28,7 @@ const producto5 = new producto(5,"Bubblegum", 710, "Spray de 250ml. Notas de sal
 //CREAR UN ARRAY DE OBJETOS
 const estanteria = []
 estanteria.push(producto1, producto2, producto3, producto4, producto5)
+localStorage.setItem("catalogo", JSON.stringify(estanteria) )
 
 //capturar div productos
 let productosDiv = document.getElementById("productos")
@@ -60,24 +61,16 @@ function mostrarProductos(estanteria){
   }
 
 }
-mostrarProductos(estanteria)
+mostrarProductos(JSON.parse(localStorage.getItem("catalogo")))
+
 
 //ordenar array por criterio
 let selectOrden = document.getElementById("selectOrden")
 
-selectOrden.addEventListener("change", () => {
-   console.log(selectOrden.value)
-   switch(selectOrden.value){
-   
-      case "1":
-         ordenarAlfabeticamenteTitulo(estanteria)
-      break
-      default:
-         mostrarCatalogo(estanteria)
-      break
-   }
-}
-)
+
+selectOrden.addEventListener("click",() => {
+  ordenarAlfabeticamenteTitulo((JSON.parse(localStorage.getItem("catalogo"))))
+} )
 // Eventos
 function ordenarAlfabeticamenteTitulo(array){
   const arrayAlfabetico = [].concat(array)
@@ -92,5 +85,6 @@ function ordenarAlfabeticamenteTitulo(array){
       return 0
   })
 
-  mostrarCatalogo(arrayAlfabetico)
+  mostrarProductos(arrayAlfabetico)
 }
+
