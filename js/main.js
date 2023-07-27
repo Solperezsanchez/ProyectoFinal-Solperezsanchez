@@ -64,7 +64,7 @@ let productosCarrito = [];
 
 //recorrer estanteria para imprimir TOOODOS los elementos de mi array
 function mostrarProductos(estanteria) {
-  productosDiv.innerHTML = ``;
+  productosDiv.innerHTML= ``;
   for (let producto of estanteria) {
     let nuevoProductoDiv = document.createElement("div");
     //agregar class
@@ -97,10 +97,14 @@ function mostrarProductos(estanteria) {
 }
 function agregarAlCarrito(producto) {
   //preguntar si existe el producto en el carrito
-  // productosCarrito.find(()=>)
-  //codigo que suma el array al carrito
-  productosCarrito.push(producto);
-  console.log(productosCarrito);
+  let productoAgregado = productosCarrito.find((elem)=>elem.id == producto.id)
+  if (productoAgregado == undefined) {
+    //codigo que suma el array al carrito
+    productosCarrito.push(producto);
+    console.log(productosCarrito);
+  }else{
+    console.log( `El producto ya fue agregado al carrito`)
+  }
 }
 mostrarProductos(JSON.parse(localStorage.getItem("catalogo")));
 
