@@ -108,6 +108,7 @@ function agregarAlCarrito(producto) {
   if (productoAgregado == undefined) {
     //codigo que suma el array al carrito
     productosCarrito.push(producto);
+    localStorage.setItem("crrito", JSON.stringify(productosCarrito))
     console.log(productosCarrito);
   }else{
     console.log( `El producto ya fue agregado al carrito`)
