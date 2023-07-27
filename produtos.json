@@ -1,0 +1,49 @@
+[
+    {
+        "id": 1,
+        "nombre": "Coco Vai",
+        "precio": 710,
+        "descripcion": "Spray de 250ml. Notas de salida:Coco. Notas de corazon:Nota lactea, Durazno. Notas de fondo: Coco, Vainilla",
+        "imagen": "textilCocoVai.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Amour",
+        "precio": 710,
+        "descripcion": "Spray de 250ml. Notas de salida: Flores de anis acarameladas, Flores de cerezo. Notas de corazon: Jazmin, Sandalo, Gardenia. Notas de fondo: Amber gris, Incienso, Vainilla.",
+        "imagen": "textilAmour.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Bamboo",
+        "precio": 710,
+        "descripcion":"Spray de 250ml. Notas de salida:Notas verdes frutales, Anana, Frutilla. Notas de corazon: Jazmin, Muguet, Rosa, Anis. Notas de fondo: Almizcle, Sandalo, Bambu.",
+        "imagen": "textilBamboo.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Bubblegum",
+        "precio": 710,
+        "descripcion": "Spray de 250ml. Notas de salida:Cerezas, Naranja, Anana. Notas de corazon:Frutilla. Notas de fondo: Vinilla, Canela.",
+        "imagen": "textilBubblegum.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Flores Blancas",
+        "precio": 710,
+        "descripcion": "Spray de 250ml. Notas de salida: Ciclamen, Gardenia, Flor de naranjo dulce. Notas de corazon: Jazmin, Orquidea, Ylang Ylang. Notas de fondo: Almizcle, Balsamico.",
+        "imagen": "textilFloresBlancas.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Limon",
+        "precio": 710,
+        "descripcion": "Spray de 250ml. Notas de salida:Cáscara de limón, Flor de limonero. Notas de corazon:Limón, Flor de naranja. Notas de fondo:Musk.",
+        "imagen": "textilLimon.jpg"
+    }
+]
+
+
+
+
+
