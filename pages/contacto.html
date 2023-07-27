@@ -92,20 +92,27 @@
       <!--MAIN CONTACTO-->
       <main>
           <h1>Dejanos tus datos y te asesoramos GRATIS!!</h1>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Deja tu duda</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-           <button
-           id="enviarDuda"
-           class="button"
-           type="submit">
-           Enviar
-           </button>
-          </div>
+           <!--FORM AGREGAR LIBRO-->
+      <form id="formAsesoramiento" class="col-lg-6 m-5">
+        <div class="mb-3">
+          <label for="nombreInput" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombreInput" aria-describedby="nombre">
+          
+        </div>
+        <div class="mb-3">
+          <label for="emailInput" class="form-label">Email</label>
+          <input type="text" class="form-control" id="emailInput" aria-describedby="email">
+          
+        </div>
+        <div class="mb-3">
+          <label for="consultaInput" class="form-label">Consulta:</label>
+          <input type="text" class="form-control" id="consultaInput" aria-describedby="">
+          
+        </div>
+        <div>
+            <button type="text" id="enviarDudaBtn" class="btn btn-dark" >Enviar duda</button>
+        </div>
+      </form>
         
       </main>
       <!--FOOTER-->
@@ -122,7 +129,7 @@
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"
   ></script>
-  
+
 </body>
 </html>
 

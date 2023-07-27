@@ -1,13 +1,14 @@
-//Funciones 
+//Funciones
 //capturar div productos
 let productosDiv = document.getElementById("productos");
 let productosCarrito = [];
 let botonCarrito = document.getElementById("botonCarrito");
 let modalBodyCarrito = document.getElementById("modal-bodyCarrito");
-let precioTotal = document.getElementById ("precioTotal")
+let precioTotal = document.getElementById("precioTotal");
+let loader = document.getElementById ("loader")
+let loaderTexto = document.getElementById("loaderTexto")
 //ordenar array por criterio
 let selectOrden = document.getElementById("selectOrden");
-
 
 //MIS PRODUCTOS
 class producto {
@@ -64,7 +65,6 @@ const producto5 = new producto(
 const estanteria = [];
 estanteria.push(producto1, producto2, producto3, producto4, producto5);
 localStorage.setItem("catalogo", JSON.stringify(estanteria));
-
 
 //Array de productos en el carrito
 
@@ -124,16 +124,15 @@ function agregarAlCarrito(producto) {
       icon: `success`,
       title: `El producto ${producto.nombre} ha sido añadido exitosamente!`,
       showConfirmButton: true,
-      timer: 1500
-    })
+      timer: 1500,
+    });
   } else {
     Swal.fire({
       icon: `warning`,
       title: ` ${producto.nombre} ya ha sido agregado al carrito`,
       width: 400,
-      padding: '3em',
-     
-    })
+      padding: "3em",
+    });
     // console.log(`El producto ya fue agregado al carrito`);
   }
 }
@@ -142,7 +141,7 @@ mostrarProductos(JSON.parse(localStorage.getItem("catalogo")));
 //DOM PARA EL ALERT DEL CARRITO
 
 function agregarProductosAlCarrito(array) {
-  modalBodyCarrito.innerHTML=``
+  modalBodyCarrito.innerHTML = ``;
   array.forEach((productoCarrito) => {
     modalBodyCarrito.innerHTML += `
     <div class="card border-primary mb-3" id ="productoCarrito${productoCarrito.id}" style="max-width: 300px;">
@@ -152,22 +151,54 @@ function agregarProductosAlCarrito(array) {
            <p class="card-text">$ ${productoCarrito.precio}</p>
             <button class= "btn btn-danger" id="botonEliminar${productoCarrito.id}"><i class="fas fa-trash-alt"></i></button>
     </div>    
-  </div>`;
-  });
-  calcularTotal(array)
+  </div>
+  `
+})
+
+//segundo forEach eliminar del carrito
+// array.forEach((productoCarrito) => {
+//   //manipular el dom sin una variable
+
+//   document
+//     .getElementById(`botonEliminar ${productoCarrito.id}`)
+//     .addEventListener("click", () => {
+//       console.log(`Eliminar producto`);
+//       //borrar del dom
+//       let cardProducto = document.getElementById(
+//         `productoCarrito${productoCarrito.id}`
+//       );
+//       cardProducto.remove();
+//       let productoEliminar = array.find(
+//         (producto) => producto.id == productoCarrito.id
+//       );
+//       console.log(productoEliminar);
+//       //buscar indice
+//       let posicion = array.indexOf(productoEliminar)
+//       console.log(posicion)
+//       array.splice(posicion,1)
+//       //setear storage
+//       localStorage.setItem("carrito", JSON.stringify(array))
+//     });
+// });
+
+  calcularTotal(array);
 }
 
 //agregamos el total
-function calcularTotal(array){
-let total = array.reduce((acc , productoCarrito) => acc+ productoCarrito.precio , 0)
-// console.log(`El total es ${total}`)
-precioTotal.innerHTML= `<strong>El total es $ ${total}</strong>`
+function calcularTotal(array) {
+  let total = array.reduce(
+    (acc, productoCarrito) => acc + productoCarrito.precio,
+    0
+  );
+  // console.log(`El total es ${total}`)
+  precioTotal.innerHTML = `<strong>El total es $ ${total}</strong>`;
 }
-
 
 selectOrden.addEventListener("click", () => {
   ordenarAlfabeticamenteTitulo(JSON.parse(localStorage.getItem("catalogo")));
 });
+
+
 // Eventos
 function ordenarAlfabeticamenteTitulo(array) {
   const arrayAlfabetico = [].concat(array);
@@ -187,3 +218,10 @@ function ordenarAlfabeticamenteTitulo(array) {
 botonCarrito.addEventListener("click", () => {
   agregarProductosAlCarrito(productosCarrito);
 });
+
+//set timeout para imprimir nuestro carrito
+setTimeout(() =>{ 
+  loaderTexto.remove()
+  loader.remove()
+  mostrarProductos(estanteria)
+},2500) 
