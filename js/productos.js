@@ -118,9 +118,23 @@ function agregarAlCarrito(producto) {
     //codigo que suma el array al carrito
     productosCarrito.push(producto);
     localStorage.setItem("carrito", JSON.stringify(productosCarrito));
-    console.log(productosCarrito);
+    // console.log(productosCarrito);
+    //Sweet alert para avisar que se agrego un producto al carrito
+    Swal.fire({
+      icon: `success`,
+      title: `El producto ${producto.nombre} ha sido añadido exitosamente!`,
+      showConfirmButton: true,
+      timer: 1500
+    })
   } else {
-    console.log(`El producto ya fue agregado al carrito`);
+    Swal.fire({
+      icon: `warning`,
+      title: ` ${producto.nombre} ya ha sido agregado al carrito`,
+      width: 400,
+      padding: '3em',
+     
+    })
+    // console.log(`El producto ya fue agregado al carrito`);
   }
 }
 mostrarProductos(JSON.parse(localStorage.getItem("catalogo")));
