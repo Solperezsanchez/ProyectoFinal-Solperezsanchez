@@ -1,3 +1,13 @@
+//Funciones 
+//capturar div productos
+let productosDiv = document.getElementById("productos");
+let productosCarrito = [];
+let botonCarrito = document.getElementById("botonCarrito");
+let modalBodyCarrito = document.getElementById("modal-bodyCarrito");
+//ordenar array por criterio
+let selectOrden = document.getElementById("selectOrden");
+
+
 //MIS PRODUCTOS
 class producto {
   constructor(id, nombre, precio, descripcion, imagen) {
@@ -54,11 +64,9 @@ const estanteria = [];
 estanteria.push(producto1, producto2, producto3, producto4, producto5);
 localStorage.setItem("catalogo", JSON.stringify(estanteria));
 
-//capturar div productos
-let productosDiv = document.getElementById("productos");
 
 //Array de productos en el carrito
-let productosCarrito = [];
+
 if (localStorage.getItem("carrito")) {
   productosCarrito = JSON.parse(localStorage.getItem("carrito"));
 } else {
@@ -117,9 +125,9 @@ function agregarAlCarrito(producto) {
 mostrarProductos(JSON.parse(localStorage.getItem("catalogo")));
 
 //DOM PARA EL ALERT DEL CARRITO
-let botonCarrito = document.getElementById("botonCarrito");
-let modalBodyCarrito = document.getElementById("modal-bodyCarrito");
+
 function agregarProductosAlCarrito(array) {
+  modalBodyCarrito.innerHTML=``
   array.forEach((productoCarrito) => {
     modalBodyCarrito.innerHTML += `
     <div class="card border-primary mb-3" id ="productoCarrito${productoCarrito.id}" style="max-width: 300px;">
@@ -133,8 +141,6 @@ function agregarProductosAlCarrito(array) {
   });
 }
 
-//ordenar array por criterio
-let selectOrden = document.getElementById("selectOrden");
 
 selectOrden.addEventListener("click", () => {
   ordenarAlfabeticamenteTitulo(JSON.parse(localStorage.getItem("catalogo")));
