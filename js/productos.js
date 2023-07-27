@@ -156,30 +156,30 @@ function agregarProductosAlCarrito(array) {
 })
 
 //segundo forEach eliminar del carrito
-// array.forEach((productoCarrito) => {
-//   //manipular el dom sin una variable
+array.forEach((productoCarrito) => {
+  //manipular el dom sin una variable
 
-//   document
-//     .getElementById(`botonEliminar ${productoCarrito.id}`)
-//     .addEventListener("click", () => {
-//       console.log(`Eliminar producto`);
-//       //borrar del dom
-//       let cardProducto = document.getElementById(
-//         `productoCarrito${productoCarrito.id}`
-//       );
-//       cardProducto.remove();
-//       let productoEliminar = array.find(
-//         (producto) => producto.id == productoCarrito.id
-//       );
-//       console.log(productoEliminar);
-//       //buscar indice
-//       let posicion = array.indexOf(productoEliminar)
-//       console.log(posicion)
-//       array.splice(posicion,1)
-//       //setear storage
-//       localStorage.setItem("carrito", JSON.stringify(array))
-//     });
-// });
+  document
+    .getElementById(`botonEliminar ${productoCarrito.id}`)
+    .addEventListener("click", () => {
+      console.log(`Eliminar producto`);
+      //borrar del dom
+      let cardProducto = document.getElementById(
+        `productoCarrito${productoCarrito.id}`
+      );
+      cardProducto.remove();
+      let productoEliminar = array.find(
+        (producto) => producto.id == productoCarrito.id
+      );
+      console.log(productoEliminar);
+      //buscar indice
+      let posicion = array.indexOf(productoEliminar)
+      console.log(posicion)
+      array.splice(posicion,1)
+      //setear storage
+      localStorage.setItem("carrito", JSON.stringify(array))
+    });
+});
 
   calcularTotal(array);
 }
