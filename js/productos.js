@@ -4,6 +4,7 @@ let productosDiv = document.getElementById("productos");
 let productosCarrito = [];
 let botonCarrito = document.getElementById("botonCarrito");
 let modalBodyCarrito = document.getElementById("modal-bodyCarrito");
+let precioTotal = document.getElementById ("precioTotal")
 //ordenar array por criterio
 let selectOrden = document.getElementById("selectOrden");
 
@@ -134,11 +135,19 @@ function agregarProductosAlCarrito(array) {
     <img class="card-img-top" width="100px" src="../img/productos/${productoCarrito.imagen}" alt="">
     <div class="card-body">
            <h4 class="card-title">${productoCarrito.nombre}</h4>
-           <p class="card-text">${productoCarrito.precio}</p>
+           <p class="card-text">$ ${productoCarrito.precio}</p>
             <button class= "btn btn-danger" id="botonEliminar${productoCarrito.id}"><i class="fas fa-trash-alt"></i></button>
     </div>    
   </div>`;
   });
+  calcularTotal(array)
+}
+
+//agregamos el total
+function calcularTotal(array){
+let total = array.reduce((acc , productoCarrito) => acc+ productoCarrito.precio , 0)
+// console.log(`El total es ${total}`)
+precioTotal.innerHTML= `<strong>El total es $ ${total}</strong>`
 }
 
 
