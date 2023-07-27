@@ -62,9 +62,9 @@ const producto5 = new producto(
 );
 
 //CREAR UN ARRAY DE OBJETOS
-const estanteria = [];
-estanteria.push(producto1, producto2, producto3, producto4, producto5);
-localStorage.setItem("catalogo", JSON.stringify(estanteria));
+const stock = [];
+stock.push(producto1, producto2, producto3, producto4, producto5);
+localStorage.setItem("catalogo", JSON.stringify(stock));
 
 //Array de productos en el carrito
 
@@ -223,5 +223,5 @@ botonCarrito.addEventListener("click", () => {
 setTimeout(() =>{ 
   loaderTexto.remove()
   loader.remove()
-  mostrarProductos(estanteria)
+  mostrarProductos(stock)
 },2500) 
