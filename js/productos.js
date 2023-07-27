@@ -61,6 +61,13 @@ let productosDiv = document.getElementById("productos");
 
 //Array de productos en el carrito
 let productosCarrito = [];
+if (localStorage.getItem("carrito")){
+  productosCarrito = JSON.parse(localStorage.getItem("carrito"))
+}else{
+  //no existe nada en el storage
+  productosCarrito =[]
+  localStorage.setItem("carrito", productosCarrito)
+}
 
 //recorrer estanteria para imprimir TOOODOS los elementos de mi array
 function mostrarProductos(estanteria) {
