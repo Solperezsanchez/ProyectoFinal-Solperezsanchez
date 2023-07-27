@@ -160,7 +160,7 @@ array.forEach((productoCarrito) => {
   //manipular el dom sin una variable
 
   document
-    .getElementById(`botonEliminar ${productoCarrito.id}`)
+    .getElementById(`botonEliminar${productoCarrito.id}`)
     .addEventListener("click", () => {
       console.log(`Eliminar producto`);
       //borrar del dom
