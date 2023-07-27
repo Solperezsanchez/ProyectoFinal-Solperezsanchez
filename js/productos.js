@@ -1,5 +1,3 @@
-//ORDENAR PRODUCTO
-
 //MIS PRODUCTOS
 class producto {
   constructor(id, nombre, precio, descripcion, imagen) {
@@ -61,21 +59,21 @@ let productosDiv = document.getElementById("productos");
 
 //Array de productos en el carrito
 let productosCarrito = [];
-if (localStorage.getItem("carrito")){
-  productosCarrito = JSON.parse(localStorage.getItem("carrito"))
-}else{
+if (localStorage.getItem("carrito")) {
+  productosCarrito = JSON.parse(localStorage.getItem("carrito"));
+} else {
   //no existe nada en el storage
-  productosCarrito =[]
-  localStorage.setItem("carrito", productosCarrito)
+  productosCarrito = [];
+  localStorage.setItem("carrito", productosCarrito);
 }
 
 //recorrer estanteria para imprimir TOOODOS los elementos de mi array
 function mostrarProductos(estanteria) {
-  productosDiv.innerHTML= ``;
+  productosDiv.innerHTML = ``;
   for (let producto of estanteria) {
     let nuevoProductoDiv = document.createElement("div");
     //agregar class
-    nuevoProductoDiv.className = "col-12 col-md-6 col-lg-4 my-2";
+    nuevoProductoDiv.className = "col-12 col-md-1 col-lg-4 my-2";
     nuevoProductoDiv.innerHTML = `<div id="${producto.id}    class="col">
      <div class="card h-100">
        <img
@@ -104,17 +102,36 @@ function mostrarProductos(estanteria) {
 }
 function agregarAlCarrito(producto) {
   //preguntar si existe el producto en el carrito
-  let productoAgregado = productosCarrito.find((elem)=>elem.id == producto.id)
+  let productoAgregado = productosCarrito.find(
+    (elem) => elem.id == producto.id
+  );
   if (productoAgregado == undefined) {
     //codigo que suma el array al carrito
     productosCarrito.push(producto);
-    localStorage.setItem("crrito", JSON.stringify(productosCarrito))
+    localStorage.setItem("carrito", JSON.stringify(productosCarrito));
     console.log(productosCarrito);
-  }else{
-    console.log( `El producto ya fue agregado al carrito`)
+  } else {
+    console.log(`El producto ya fue agregado al carrito`);
   }
 }
 mostrarProductos(JSON.parse(localStorage.getItem("catalogo")));
+
+//DOM PARA EL ALERT DEL CARRITO
+let botonCarrito = document.getElementById("botonCarrito");
+let modalBodyCarrito = document.getElementById("modal-bodyCarrito");
+function agregarProductosAlCarrito(array) {
+  array.forEach((productoCarrito) => {
+    modalBodyCarrito.innerHTML += `
+    <div class="card border-primary mb-3" id ="productoCarrito${productoCarrito.id}" style="max-width: 300px;">
+    <img class="card-img-top" width="100px" src="../img/productos/${productoCarrito.imagen}" alt="">
+    <div class="card-body">
+           <h4 class="card-title">${productoCarrito.nombre}</h4>
+           <p class="card-text">${productoCarrito.precio}</p>
+            <button class= "btn btn-danger" id="botonEliminar${productoCarrito.id}"><i class="fas fa-trash-alt"></i></button>
+    </div>    
+  </div>`;
+  });
+}
 
 //ordenar array por criterio
 let selectOrden = document.getElementById("selectOrden");
@@ -138,3 +155,6 @@ function ordenarAlfabeticamenteTitulo(array) {
 
   mostrarProductos(arrayAlfabetico);
 }
+botonCarrito.addEventListener("click", () => {
+  agregarProductosAlCarrito(productosCarrito);
+});

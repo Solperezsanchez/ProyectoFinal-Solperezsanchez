@@ -1,4 +1,10 @@
-*{ background-color:white;
-color: black;
+* {
+  background-color: white;
+  color: black;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
 }
-.logoTop{ width:5rem;}
+.logoTop {
+  width: 5rem;
+}
