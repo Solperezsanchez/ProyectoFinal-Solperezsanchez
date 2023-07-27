@@ -56,6 +56,14 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
+          <button className="nav-item " type="button">
+            <a
+              id="botonCarrito"
+              data-bs-toggle="modal"
+              data-bs-target="#idModalCarrito"
+              ><i class="fas fa-shopping-cart fa-1x"></i
+            ></a>
+          </button>
           <div
             class="offcanvas offcanvas-end"
             tabindex="-1"
@@ -85,17 +93,6 @@
                   <a class="nav-link" href="#">Contacto</a>
                 </li>
               </ul>
-              <form class="d-flex mt-3" role="search">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Buscar"
-                  aria-label="Buscar"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Buscar
-                </button>
-              </form>
             </div>
           </div>
         </div>
@@ -112,6 +109,30 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
            <input class="enviarDuda"  type="submit" value="Enviar">
           </div>
+          <!--CARRITO-->
+            <!--Modal Carrito-->
+    <div class="modal fade" id="idModalCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modal-bodyCarrito">
+            
+          </div>
+          <div class="row ml-ato">
+            <p id="precioTotal"></p>
+          </div>
+          <div class="modal-footer">
+            
+            
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" data-bs-dismiss="modal" class="btn btn-success" id="botonFinalizarCompra">Finalizar Compra</button>
+          </div>
+        </div>
+      </div>
+    </div>
       </main>
       <!--FOOTER-->
     <div class="card text-center">
@@ -129,6 +150,7 @@
   ></script>
   <!--Script JS mio-->
   <script src="../js/contacto.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>
 
