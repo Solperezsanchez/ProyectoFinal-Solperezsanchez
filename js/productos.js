@@ -76,10 +76,10 @@ if (localStorage.getItem("carrito")) {
   localStorage.setItem("carrito", productosCarrito);
 }
 
-//recorrer estanteria para imprimir TOOODOS los elementos de mi array
-function mostrarProductos(estanteria) {
+//recorrer stock para imprimir TOOODOS los elementos de mi array
+function mostrarProductos(stock) {
   productosDiv.innerHTML = ``;
-  for (let producto of estanteria) {
+  for (let producto of stock) {
     let nuevoProductoDiv = document.createElement("div");
     //agregar class
     nuevoProductoDiv.className = "col-12 col-md-1 col-lg-4 my-2";
