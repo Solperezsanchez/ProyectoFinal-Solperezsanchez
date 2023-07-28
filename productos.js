@@ -234,7 +234,7 @@ function finalizarCompra(array){
         Swal.fire({
            title: 'Su compra no pudo realizarse',
            icon: 'info',
-           text: `Tenes productoen tu carrito <3`,
+           text: `Tenes producto en tu carrito <3`,
            confirmButtonColor: 'green',
            timer:3500
        })
