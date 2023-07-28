@@ -11,7 +11,7 @@ let loaderTexto = document.getElementById("loaderTexto")
 let selectOrden = document.getElementById("selectOrden");
 
 //MIS PRODUCTOS
-class producto {
+class Producto {
   constructor(id, nombre, precio, descripcion, imagen) {
     (this.id = id),
       (this.nombre = nombre),
@@ -68,7 +68,7 @@ const cargarStock = async () =>{
   const data = await res.json()
   
   for(let producto of data){
-      let productoData = new producto (producto.id, producto.nombre, producto.precio, producto.descripcion, producto.imagen)
+      let productoData = new Spray (producto.id, producto.nombre, producto.precio, producto.descripcion, producto.imagen)
       estanteria.push(productoData)
       
   }
@@ -87,9 +87,7 @@ if(localStorage.getItem("stock")){
   cargarStock()
    localStorage.setItem("stock", JSON.stringify(stock))
 }
-// const stock = [];
-// stock.push(producto1, producto2, producto3, producto4, producto5);
-// localStorage.setItem("catalogo", JSON.stringify());
+
 
 //Array de productos en el carrito
 
