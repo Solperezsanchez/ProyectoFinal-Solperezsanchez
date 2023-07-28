@@ -68,7 +68,7 @@ const cargarStock = async () =>{
   const data = await res.json()
   
   for(let producto of data){
-      let productoData = new Spray (producto.id, producto.nombre, producto.precio, producto.descripcion, producto.imagen)
+      let productoData = new Producto (producto.id, producto.nombre, producto.precio, producto.descripcion, producto.imagen)
       estanteria.push(productoData)
       
   }
