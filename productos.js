@@ -84,8 +84,8 @@ if(localStorage.getItem("stock")){
   stock = JSON.parse(localStorage.getItem("stock"))
 }else{
   
-  cargarStock()
-   localStorage.setItem("stock", JSON.stringify(stock))
+cargarStock()
+   
 }
 
 
@@ -159,7 +159,7 @@ function agregarAlCarrito(producto) {
     // console.log(`El producto ya fue agregado al carrito`);
   }
 }
-mostrarProductos(JSON.parse(localStorage.getItem("stock")));
+// mostrarProductos(JSON.parse(localStorage.getItem("stock")));
 
 //DOM PARA EL ALERT DEL CARRITO
 
