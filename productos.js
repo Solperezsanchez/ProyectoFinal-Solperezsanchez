@@ -61,6 +61,7 @@ class producto {
 //   "textilBubblegum.jpg"
 // );
 
+let stock = [] 
 //CREAR UN ARRAY DE OBJETOS
 const cargarStock = async () =>{
   const res = await fetch("productos.json")
@@ -75,7 +76,6 @@ const cargarStock = async () =>{
 }
 
 //CREAR UN ARRAY DE OBJETOS
-let stock = [] 
 
 
 if(localStorage.getItem("stock")){
