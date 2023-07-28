@@ -21,60 +21,85 @@ class producto {
   }
 }
 //Instanciación de objetos:
-const producto1 = new producto(
-  1,
-  "Coco Vai",
-  710,
-  "Spray de 250ml. Notas de salida:Coco. Notas de corazon:Nota lactea, Durazno. Notas de fondo: Coco, Vainilla",
-  "textilCocoVai.jpg"
-);
+// const producto1 = new producto(
+//   1,
+//   "Coco Vai",
+//   710,
+//   "Spray de 250ml. Notas de salida:Coco. Notas de corazon:Nota lactea, Durazno. Notas de fondo: Coco, Vainilla",
+//   "textilCocoVai.jpg"
+// );
 
-const producto2 = new producto(
-  2,
-  "Amour",
-  710,
-  "Spray de 250ml. Notas de salida: Flores de anis acarameladas, Flores de cerezo. Notas de corazon: Jazmin, Sandalo, Gardenia. Notas de fondo: Amber gris, Incienso, Vainilla.",
-  "textilAmour.jpg"
-);
+// const producto2 = new producto(
+//   2,
+//   "Amour",
+//   710,
+//   "Spray de 250ml. Notas de salida: Flores de anis acarameladas, Flores de cerezo. Notas de corazon: Jazmin, Sandalo, Gardenia. Notas de fondo: Amber gris, Incienso, Vainilla.",
+//   "textilAmour.jpg"
+// );
 
-const producto3 = new producto(
-  3,
-  "Flores blancas",
-  710,
-  "Spray de 250ml. Notas de salida: Ciclamen, Gardenia, Flor de naranjo dulce. Notas de corazon: Jazmin, Orquidea, Ylang Ylang. Notas de fondo: Almizcle, Balsamico.",
-  "textilFloresBlancas.jpg"
-);
+// const producto3 = new producto(
+//   3,
+//   "Flores blancas",
+//   710,
+//   "Spray de 250ml. Notas de salida: Ciclamen, Gardenia, Flor de naranjo dulce. Notas de corazon: Jazmin, Orquidea, Ylang Ylang. Notas de fondo: Almizcle, Balsamico.",
+//   "textilFloresBlancas.jpg"
+// );
 
-const producto4 = new producto(
-  4,
-  "Bamboo",
-  710,
-  "Spray de 250ml. Notas de salida:Notas verdes frutales, Anana, Frutilla. Notas de corazon: Jazmin, Muguet, Rosa, Anis. Notas de fondo: Almizcle, Sandalo, Bambu.",
-  "textilBamboo.jpg"
-);
+// const producto4 = new producto(
+//   4,
+//   "Bamboo",
+//   710,
+//   "Spray de 250ml. Notas de salida:Notas verdes frutales, Anana, Frutilla. Notas de corazon: Jazmin, Muguet, Rosa, Anis. Notas de fondo: Almizcle, Sandalo, Bambu.",
+//   "textilBamboo.jpg"
+// );
 
-const producto5 = new producto(
-  5,
-  "Bubblegum",
-  710,
-  "Spray de 250ml. Notas de salida:Cerezas, Naranja, Anana. Notas de corazon:Frutilla. Notas de fondo: Vinilla, Canela.",
-  "textilBubblegum.jpg"
-);
+// const producto5 = new producto(
+//   5,
+//   "Bubblegum",
+//   710,
+//   "Spray de 250ml. Notas de salida:Cerezas, Naranja, Anana. Notas de corazon:Frutilla. Notas de fondo: Vinilla, Canela.",
+//   "textilBubblegum.jpg"
+// );
 
 //CREAR UN ARRAY DE OBJETOS
-const stock = [];
-stock.push(producto1, producto2, producto3, producto4, producto5);
-localStorage.setItem("catalogo", JSON.stringify(stock));
-
-//Array de productos en el carrito
-
-if (localStorage.getItem("carrito")) {
-  productosCarrito = JSON.parse(localStorage.getItem("carrito"));
-} else {
-  //no existe nada en el storage
-  productosCarrito = [];
-  localStorage.setItem("carrito", productosCarrito);
+const cargarStock = async () =>{
+  const res = await fetch("productos.json")
+  const data = await res.json()
+  
+  for(let producto of data){
+      let productoData = new producto (producto.id, producto.nombre, producto.precio, producto.descripcion, producto.imagen)
+      estanteria.push(productoData)
+      
+  }
+  localStorage.setItem("stock", JSON.stringify(stock))
 }
+
+//CREAR UN ARRAY DE OBJETOS
+let stock = [] 
+
+
+if(localStorage.getItem("stock")){
+ 
+  //cuando no es la primera vez, me traigo lo de storage
+  stock = JSON.parse(localStorage.getItem("stock"))
+}else{
+  
+  cargarStock()
+   localStorage.setItem("stock", JSON.stringify(stock))
+}
+// const stock = [];
+// stock.push(producto1, producto2, producto3, producto4, producto5);
+// localStorage.setItem("catalogo", JSON.stringify());
+
+// //Array de productos en el carrito
+
+// if (localStorage.getItem("carrito")) {
+//   productosCarrito = JSON.parse(localStorage.getItem("carrito"));
+// } else {
+//   //no existe nada en el storage
+//   productosCarrito = [];
+//   localStorage.setItem("carrito", productosCarrito);
+// }
 
 //recorrer stock para imprimir TOOODOS los elementos de mi array
 function mostrarProductos(stock) {
@@ -136,7 +161,7 @@ function agregarAlCarrito(producto) {
     // console.log(`El producto ya fue agregado al carrito`);
   }
 }
-mostrarProductos(JSON.parse(localStorage.getItem("catalogo")));
+mostrarProductos(JSON.parse(localStorage.getItem("stock")));
 
 //DOM PARA EL ALERT DEL CARRITO
 
@@ -195,7 +220,7 @@ function calcularTotal(array) {
 }
 
 selectOrden.addEventListener("click", () => {
-  ordenarAlfabeticamenteTitulo(JSON.parse(localStorage.getItem("catalogo")));
+  ordenarAlfabeticamenteTitulo(JSON.parse(localStorage.getItem("stock")));
 });
 
 
