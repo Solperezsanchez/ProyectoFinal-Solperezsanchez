@@ -163,7 +163,9 @@ array.forEach((productoCarrito) => {
       array.splice(posicion,1)
       //setear storage
       localStorage.setItem("carrito", JSON.stringify(array))
+      calcularTotal(array)
     });
+  
 });
 
   calcularTotal(array);
@@ -177,6 +179,7 @@ function calcularTotal(array) {
   );
   // console.log(`El total es ${total}`)
   precioTotal.innerHTML = `<strong>El total es $ ${total}</strong>`;
+  return total
 }
 
 selectOrden.addEventListener("click", () => {
