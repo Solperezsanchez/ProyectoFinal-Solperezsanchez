@@ -64,15 +64,15 @@ class Producto {
 let stock = [] 
 //CREAR UN ARRAY DE OBJETOS
 const cargarStock = async () =>{
-  const res = await fetch("productos.json")
+ 
+  const res = await fetch("./productos.json")
   const data = await res.json()
-  
   for(let producto of data){
       let productoData = new Producto (producto.id, producto.nombre, producto.precio, producto.descripcion, producto.imagen)
-      estanteria.push(productoData)
-      
+      stock.push(productoData)
   }
   localStorage.setItem("stock", JSON.stringify(stock))
+  mostrarProductos(stock);
 }
 
 //CREAR UN ARRAY DE OBJETOS
@@ -248,3 +248,10 @@ setTimeout(() =>{
   loader.remove()
   mostrarProductos(stock)
 },2500) 
+
+// fetch("./producto.json").then(res=>res.json()).then(dataJSON=>{
+//   loaderTexto.remove()
+//   loader.remove()
+//   mostrarProductos(dataJSON)
+// })
+// .catch(err => console.log(err))
