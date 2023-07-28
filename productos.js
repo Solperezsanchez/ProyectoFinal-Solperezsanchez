@@ -7,6 +7,7 @@ let modalBodyCarrito = document.getElementById("modal-bodyCarrito");
 let precioTotal = document.getElementById("precioTotal");
 let loader = document.getElementById ("loader")
 let loaderTexto = document.getElementById("loaderTexto")
+let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 //ordenar array por criterio
 let selectOrden = document.getElementById("selectOrden");
 
@@ -241,7 +242,41 @@ function ordenarAlfabeticamenteTitulo(array) {
 botonCarrito.addEventListener("click", () => {
   agregarProductosAlCarrito(productosCarrito);
 });
-
+//Finalizar compra
+function finalizarCompra(array){
+  Swal.fire({
+     title: '¿Quiere realizar la compra?',
+     icon: 'info',
+     showCancelButton: true,
+     confirmButtonText: 'Si, quiero',
+     cancelButtonText: 'No, no quiero',
+     confirmButtonColor: 'green',
+     cancelButtonColor: 'red',
+ }).then((result) => {
+     if(result.isConfirmed){
+        //finalizar compra con todos sus detalles
+        //a nivel DOM avisarle que se realizo la compra
+        let totalFinal = calcularTotal(array)
+        Swal.fire({
+           title: 'Compra realizada con exito',
+           icon: 'success',
+           confirmButtonColor: 'green',
+           text: `Gracias por comprar en CMK!. El monto a abonar es $ ${totalFinal} `,
+           })
+        //nivel arrays resear productosEnCarrito
+        productosCarrito = []
+        localStorage.removeItem("carrito")
+     }else{
+        Swal.fire({
+           title: 'Su compra no pudo realizarse',
+           icon: 'info',
+           text: `Tenes productoen tu carrito <3`,
+           confirmButtonColor: 'green',
+           timer:3500
+       })
+     }
+ } )
+} 
 //set timeout para imprimir nuestro carrito
 setTimeout(() =>{ 
   loaderTexto.remove()
@@ -249,9 +284,7 @@ setTimeout(() =>{
   mostrarProductos(stock)
 },2500) 
 
-// fetch("./producto.json").then(res=>res.json()).then(dataJSON=>{
-//   loaderTexto.remove()
-//   loader.remove()
-//   mostrarProductos(dataJSON)
-// })
-// .catch(err => console.log(err))
+//btn finalizar compra y su acción:
+botonFinalizarCompra.addEventListener("click", () =>{
+  finalizarCompra(productosCarrito)
+})
