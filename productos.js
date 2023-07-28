@@ -91,15 +91,15 @@ if(localStorage.getItem("stock")){
 // stock.push(producto1, producto2, producto3, producto4, producto5);
 // localStorage.setItem("catalogo", JSON.stringify());
 
-// //Array de productos en el carrito
+//Array de productos en el carrito
 
-// if (localStorage.getItem("carrito")) {
-//   productosCarrito = JSON.parse(localStorage.getItem("carrito"));
-// } else {
-//   //no existe nada en el storage
-//   productosCarrito = [];
-//   localStorage.setItem("carrito", productosCarrito);
-// }
+if (localStorage.getItem("carrito")) {
+  productosCarrito = JSON.parse(localStorage.getItem("carrito"));
+} else {
+  //no existe nada en el storage
+  productosCarrito = [];
+  localStorage.setItem("carrito", productosCarrito);
+}
 
 //recorrer stock para imprimir TOOODOS los elementos de mi array
 function mostrarProductos(stock) {
